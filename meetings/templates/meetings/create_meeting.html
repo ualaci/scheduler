@@ -1,0 +1,502 @@
+<script>window.enableEventObserver=true</script>
+<script src="https://cdn02.jotfor.ms/static/prototype.forms.js?v=3.3.62016" type="text/javascript"></script>
+<script src="https://cdn03.jotfor.ms/static/jotform.forms.js?v=3.3.62016" type="text/javascript"></script>
+<script src="https://cdn01.jotfor.ms/js/vendor/maskedinput_5.0.9.min.js?v=3.3.62016" type="text/javascript"></script>
+<script src="https://cdn01.jotfor.ms/s/umd/ad1adf9f89e/for-form-branding-footer.js?v=3.3.62016" type="text/javascript" defer></script>
+<script src="https://cdn02.jotfor.ms/js/vendor/smoothscroll.min.js?v=3.3.62016" type="text/javascript"></script>
+<script src="https://cdn03.jotfor.ms/js/errorNavigation.js?v=3.3.62016" type="text/javascript"></script>
+<script type="text/javascript">	JotForm.newDefaultTheme = true;
+	JotForm.extendsNewTheme = false;
+	JotForm.singleProduct = false;
+	JotForm.newPaymentUIForNewCreatedForms = false;
+	JotForm.texts = {"confirmEmail":"E-mail does not match","pleaseWait":"Please wait...","validateEmail":"You need to validate this e-mail","confirmClearForm":"Are you sure you want to clear the form","lessThan":"Your score should be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","required":"This field is required.","requireOne":"At least one field required.","requireEveryRow":"Every row is required.","requireEveryCell":"Every cell is required.","email":"Enter a valid e-mail address","alphabetic":"This field can only contain letters","numeric":"This field can only contain numeric values","alphanumeric":"This field can only contain letters and numbers.","cyrillic":"This field can only contain cyrillic characters","url":"This field can only contain a valid URL","currency":"This field can only contain currency values.","fillMask":"Field value must fill mask.","uploadExtensions":"You can only upload following files:","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","gradingScoreError":"Score total should only be less than or equal to","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","maxDigitsError":"The maximum digits allowed is","minCharactersError":"The number of characters should not be less than the minimum value:","maxCharactersError":"The number of characters should not be more than the maximum value:","freeEmailError":"Free email accounts are not allowed","minSelectionsError":"The minimum required number of selections is ","maxSelectionsError":"The maximum number of selections allowed is ","pastDatesDisallowed":"Date must not be in the past.","dateLimited":"This date is unavailable.","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","ageVerificationError":"You must be older than {minAge} years old to submit this form.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","chooseAFile_infoMessage":"Choose a file","maxFileSize_infoMessage":"Max. file size","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","ccInvalidNumber":"Credit Card Number is invalid.","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingProduct":"Please select at least one product.","ccMissingDonation":"Please enter numeric values for donation amount.","disallowDecimals":"Please enter a whole number.","restrictedDomain":"This domain is not allowed","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","requiredLegend":"All fields marked with * are required and must be filled.","geoPermissionTitle":"Permission Denied","geoPermissionDesc":"Check your browser's privacy settings.","geoNotAvailableTitle":"Position Unavailable","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoTimeoutTitle":"Timeout","geoTimeoutDesc":"Please check your internet connection and try again.","selectedTime":"Selected Time","formerSelectedTime":"Former Time","cancelAppointment":"Cancel Appointment","cancelSelection":"Cancel Selection","noSlotsAvailable":"No slots available","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","multipleError":"There are {count} errors on this page. Please correct them before moving on.","oneError":"There is {count} error on this page. Please correct it before moving on.","doneMessage":"Well done! All errors are fixed.","invalidTime":"Enter a valid time","doneButton":"Done","reviewSubmitText":"Review and Submit","nextButtonText":"Next","prevButtonText":"Previous","seeErrorsButton":"See Errors","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","soldOut":"Sold Out","justSoldOut":"Just Sold Out","selectionSoldOut":"Selection Sold Out","subProductItemsLeft":"({count} items left)","startButtonText":"START","submitButtonText":"Submit","submissionLimit":"Sorry! Only one entry is allowed. <br> Multiple submissions are disabled for this form.","reviewBackText":"Back to Form","seeAllText":"See All","progressMiddleText":"of","fieldError":"field has an error.","error":"Error"};
+	JotForm.newPaymentUI = true;
+	JotForm.originalLanguage = "en";
+	JotForm.isFormViewTrackingAllowed = true;
+	JotForm.replaceTagTest = true;
+	JotForm.uploadServerURL = "https://upload.jotform.com/upload";
+	JotForm.submitError="jumpToFirstError";
+	window.addEventListener('DOMContentLoaded',function(){window.brandingFooter.init({"formID":250865430014651,"campaign":"powered_by_jotform_le","isCardForm":false,"isLegacyForm":true,"formLanguage":"en"})});	JotForm.isFullSource = true;
+
+	JotForm.init(function(){
+	/*INIT-START*/
+
+ JotForm.calendarMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+ if (!JotForm.calenderViewMonths) JotForm.calenderViewMonths = {};  JotForm.calenderViewMonths[7] = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+ if (!JotForm.calenderViewDays) JotForm.calenderViewDays = {};  JotForm.calenderViewDays[7] = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+ JotForm.calendarDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+ JotForm.calendarOther = {"today":"Today"};
+ var languageOptions = document.querySelectorAll('#langList li'); 
+ for(var langIndex = 0; langIndex < languageOptions.length; langIndex++) { 
+   languageOptions[langIndex].on('click', function(e) { setTimeout(function(){ JotForm.setCalendar("7", false, {"days":{"monday":true,"tuesday":true,"wednesday":true,"thursday":true,"friday":true,"saturday":true,"sunday":true},"future":true,"past":true,"custom":false,"ranges":false,"start":"","end":"","countSelectedDaysOnly":false}); }, 0); });
+ } 
+ JotForm.onTranslationsFetch(function() { JotForm.setCalendar("7", false, {"days":{"monday":true,"tuesday":true,"wednesday":true,"thursday":true,"friday":true,"saturday":true,"sunday":true},"future":true,"past":true,"custom":false,"ranges":false,"start":"","end":"","countSelectedDaysOnly":false}); });
+ JotForm.formatDate({date:(new Date()), dateField:$("id_"+7)});
+ JotForm.displayLocalTime("input_7_hourSelect", "input_7_minuteSelect","input_7_ampm", "input_7_timeInput", false);
+if (window.JotForm && JotForm.accessible) $('input_8').setAttribute('tabindex',0);
+	/*INIT-END*/
+	});
+
+   setTimeout(function() {
+JotForm.paymentExtrasOnTheFly([null,null,null,null,null,{"name":"solicitante","qid":"5","text":"Solicitante","type":"control_dropdown"},{"name":"coffeService","qid":"6","text":"Coffe Service","type":"control_checkbox"},{"name":"dataE","qid":"7","text":"Data e Hora","type":"control_datetime"},{"mde":"No","name":"finalidade","qid":"8","text":"Finalidade","type":"control_textarea","wysiwyg":"Disable"},{"name":"submit","qid":"9","text":"Submit","type":"control_button"},{"description":"","name":"choiceOf10","qid":"10","subLabel":"","text":"Local","type":"control_dropdown"},{"name":"cadastrarNova","qid":"11","text":"Cadastrar Nova Reuniao","type":"control_head"}]);}, 20); 
+</script>
+<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/stylebuilder/static/form-common.css?v=4a3e2b0
+"/>
+<style type="text/css">@media print{*{-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
+<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.62016&themeRevisionID=63763808623532087895e4de"/>
+<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_styles.css?3.3.62016" />
+<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/css/styles/payment/payment_feature.css?3.3.62016" />
+<style type="text/css" id="form-designer-style">
+    /* Injected CSS Code */
+
+/* Begining of advanced designer */
+/* 17 - INPUT WIDTHS */
+/*  20 - FORM PADDING */
+.form-section {
+  padding: 0px 38px;
+}
+/* Heights */
+/* 11 - LINE PADDING */
+/* LABEL STYLE */
+/* 12 - ROUNDED INPUTS */
+.supernova .form-all,
+.form-all {
+  border-radius: 0px;
+}
+.form-section:first-child {
+  border-radius: 0px 0px 0 0;
+}
+.form-section:last-child {
+  border-radius: 0 0 0px 0px;
+}
+.form-checkbox-item label,
+.form-checkbox-item span,
+.form-radio-item label,
+.form-radio-item span {
+  color: #404a64;
+}
+.form-radio-item,
+.form-checkbox-item {
+  padding-bottom: 0px !important;
+}
+.form-radio-item:last-child,
+.form-checkbox-item:last-child {
+  padding-bottom: 0;
+}
+.form-single-column .form-checkbox-item,
+.form-single-column .form-radio-item {
+  width: 100%;
+}
+.form-checkbox-item .editor-container div,
+.form-radio-item .editor-container div {
+  position: relative;
+}
+.form-checkbox-item .editor-container div:before,
+.form-radio-item .editor-container div:before {
+  display: inline-block;
+  vertical-align: middle;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+.submit-button {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: inherit;
+}
+.submit-button {
+  min-width: 180px;
+}
+.form-all .form-pagebreak-back,
+.form-all .form-pagebreak-next {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+.form-all .form-pagebreak-back,
+.form-all .form-pagebreak-next {
+  min-width: 128px;
+}
+li[data-type="control_image"] div {
+  text-align: left;
+}
+li[data-type="control_image"] img {
+  border: none;
+  border-width: 0px !important;
+  border-style: solid !important;
+  border-color: false !important;
+}
+.supernova {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center top;
+  background-repeat: repeat;
+}
+.supernova {
+  background-image: none;
+}
+#stage {
+  background-image: none;
+}
+/* | */
+.form-all {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center top;
+  background-repeat: repeat;
+}
+.form-header-group {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center top;
+}
+.header-large h1.form-header {
+  font-size: 2em;
+}
+.header-large h2.form-header {
+  font-size: 1.5em;
+}
+.header-large h3.form-header {
+  font-size: 1.17em;
+}
+.header-large h1 + .form-subHeader {
+  font-size: 1em;
+}
+.header-large h2 + .form-subHeader {
+  font-size: .875em;
+}
+.header-large h3 + .form-subHeader {
+  font-size: .75em;
+}
+.header-default h1.form-header {
+  font-size: 2em;
+}
+.header-default h2.form-header {
+  font-size: 1.5em;
+}
+.header-default h3.form-header {
+  font-size: 1.17em;
+}
+.header-default h1 + .form-subHeader {
+  font-size: 1em;
+}
+.header-default h2 + .form-subHeader {
+  font-size: .875em;
+}
+.header-default h3 + .form-subHeader {
+  font-size: .75em;
+}
+.header-small h1.form-header {
+  font-size: 2em;
+}
+.header-small h2.form-header {
+  font-size: 1.5em;
+}
+.header-small h3.form-header {
+  font-size: 1.17em;
+}
+.header-small h1 + .form-subHeader {
+  font-size: 1em;
+}
+.header-small h2 + .form-subHeader {
+  font-size: .875em;
+}
+.header-small h3 + .form-subHeader {
+  font-size: .75em;
+}
+.form-header-group {
+  text-align: left;
+}
+.form-header-group {
+  font-family: "false", sans-serif;
+}
+div.form-header-group.header-large,
+div.form-header-group.hasImage {
+  margin: 0px -38px;
+}
+div.form-header-group.header-large,
+div.form-header-group.hasImage {
+  padding: 0px 0px;
+}
+.form-header-group .form-header,
+.form-header-group .form-subHeader {
+  color: -1;
+}
+.form-header-group {
+  background-color: #f1f1ef;
+}
+.form-line-error {
+  overflow: hidden;
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -ms-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  background-color: #fff4f4;
+}
+.form-line-error .form-error-message {
+  background-color: #f23a3c;
+  clear: both;
+  float: none;
+}
+.form-line-error .form-error-message .form-error-arrow {
+  border-bottom-color: #f23a3c;
+}
+.form-line-error input:not(#coupon-input),
+.form-line-error textarea,
+.form-line-error .form-validation-error {
+  border: 1px solid #f23a3c;
+  box-shadow: 0 0 3px #f23a3c;
+}
+.form-line-error {
+  overflow: hidden;
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -ms-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  background-color: #fff4f4;
+}
+.form-line-active {
+  background-color: #ffffe0;
+}
+/* 29 - FORM COLUMNS */
+/*PREFERENCES STYLE*/
+/*  1 - Preferences style */
+/*  1 - FONT FAMILY */
+.form-all {
+  font-family: "Inter", sans-serif;
+}
+/* 2 - FORM WIDTH */
+.form-all {
+  max-width: 752px;
+}
+/* 5 - FONT SIZE */
+.form-all {
+  font-size: 16px;
+}
+/* 5 - input bg color */
+.form-textbox,
+.form-textarea,
+.form-radio-other-input,
+.form-checkbox-other-input,
+.form-captcha input,
+.form-spinner input {
+  background-color: #ffffff;
+}
+/* 10 - LINE SPACING */
+.form-line {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.supernova .form-all,
+.form-all {
+  background-color: #ffffff;
+}
+.supernova {
+  background-color: #9ecec4;
+}
+.supernova body {
+  background-color: transparent;
+}
+.form-all,
+.form-label-top,
+.form-label-left,
+.form-label-right,
+.form-html,
+.form-checkbox-item label,
+.form-radio-item label,
+span.FITB .qb-checkbox-label,
+span.FITB .qb-radiobox-label,
+span.FITB .form-radio label,
+span.FITB .form-checkbox label,
+[data-blotid][data-type=checkbox] [data-labelid],
+[data-blotid][data-type=radiobox] [data-labelid],
+span.FITB-inptCont[data-type=checkbox] label,
+span.FITB-inptCont[data-type=radiobox] label,
+.form-sub-label {
+  color: #2c3345;
+}
+.form-all {
+  margin: 72px auto;
+}
+.form-all:before {
+  content: none;
+}
+/*PREFERENCES STYLE*/
+
+/*__INSPECT_SEPERATOR__*/.form-all {
+    box-shadow : 0 0 32px rgba(42, 42, 42, 0.16);
+}
+
+.form-header-group.header-small {
+    border : 0;
+    box-sizing: border-box;
+}
+
+.form-header-group.header-small h3 {
+    text-transform : uppercase;
+    font-size : 26px;
+    font-weight : 600;
+    text-align : left;
+    padding-right : 18px;
+    color : #2C3345;
+    line-height : 32px;
+}
+
+.form-header-group.header-small .form-subHeader {
+    color : #2C3345;
+    text-align : left;
+    font-weight : 300;
+    opacity : 0.8;
+    font-size : 14px;
+}
+
+.header-logo img {
+    vertical-align : bottom;
+}
+
+.header-text {
+    padding : 24px;
+}
+
+@media screen and (max-width: 768px){
+  .form-header-group.header-small,
+  .form-header-group.hasImage.header-small {
+        margin : 0 -14px !important;
+    }
+    
+  .form-header-group.header-small {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .form-header-group.header-small,
+  .form-header-group.hasImage.header-small {
+      margin : 0!important;
+  }
+}
+
+@media screen and (max-width: 380px){
+    .form-header-group.header-small {
+      flex-direction: column;
+    }
+    .form-header-group.header-small,
+    .form-header-group.hasImage.header-small {
+        margin : 0 !important;
+    }
+    .form-header-group.header-small h3 {
+        font-size : 14px;
+        line-height : 20px;
+        padding-right : 6px;
+    }
+
+    .form-header-group.header-small .form-subHeader {
+        font-size : 11px;
+    }
+
+    .form-header-group.header-small h3,
+    .form-header-group.header-small .form-subHeader {
+        text-align : center;
+    }
+
+}
+    /* Injected CSS Code */
+</style>
+
+<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/250865430014651" method="post" name="form_250865430014651" id="250865430014651" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="250865430014651" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1743188370002" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1743188370002" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+  <div role="main" class="form-all">
+    <ul class="form-section page-section" role="presentation">
+      <li id="cid_11" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group  header-default">
+          <div class="header-text httal htvam">
+            <h2 id="header_11" class="form-header" data-component="header">Cadastrar Nova Reunião</h2>
+          </div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_dropdown" id="id_5"><label class="form-label form-label-top form-label-auto" id="label_5" for="input_5" aria-hidden="false"> Solicitante<span class="form-required">*</span> </label>
+        <div id="cid_5" class="form-input-wide jf-required" data-layout="half"> <select class="form-dropdown validate[required]" id="input_5" name="q5_solicitante" style="width:310px" data-component="dropdown" required="" aria-label="Solicitante">
+            <option value="">Please Select</option>
+            <option value="Violin">Violin</option>
+            <option value="Guitar">Guitar</option>
+            <option value="Bass">Bass</option>
+            <option value="Drums">Drums</option>
+            <option value="Vocals">Vocals</option>
+          </select> </div>
+      </li>
+      <li class="form-line jf-required allowTime" data-type="control_datetime" id="id_7"><label class="form-label form-label-top form-label-auto" id="label_7" for="lite_mode_7" aria-hidden="false"> Data e Hora<span class="form-required">*</span> </label>
+        <div id="cid_7" class="form-input-wide jf-required" data-layout="full">
+          <div data-wrapper-react="true" class="extended">
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[required, limitDate]" id="month_7" name="q7_dataE[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" required="" autoComplete="off" aria-labelledby="label_7 sublabel_7_month" value="03" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_7" id="sublabel_7_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="currentDate form-textbox validate[required, limitDate]" id="day_7" name="q7_dataE[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" required="" autoComplete="off" aria-labelledby="label_7 sublabel_7_day" value="28" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_7" id="sublabel_7_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[required, limitDate]" id="year_7" name="q7_dataE[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" required="" autoComplete="off" aria-labelledby="label_7 sublabel_7_year" value="2025" /><label class="form-sub-label" for="year_7" id="sublabel_7_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[required, limitDate, validateLiteDate]" id="lite_mode_7" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" required="" data-format="mmddyyyy" data-seperator="-" placeholder="MM-DD-YYYY" data-placeholder="MM-DD-YYYY" autoComplete="off" aria-labelledby="label_7 sublabel_7_litemode" value="03-28-2025" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_7_pick" data-component="datetime" aria-hidden="true" data-allow-time="Yes" data-version="v2"></button><label class="form-sub-label" for="lite_mode_7" id="sublabel_7_litemode" style="min-height:13px">Date</label></span><span class="allowTime-container timeAMPM">
+              <div data-wrapper-react="true"><span class="form-sub-label-container hasAMPM" style="vertical-align:top"><input class="currentTime time-dropdown form-textbox validate[required, time]" id="input_7_timeInput" name="q7_dataE[timeInput]" type="text" required="" placeholder="HH : MM" aria-labelledby="label_7 sublabel_7_hour" data-mask="hh:MM" autoComplete="off" data-version="v2" value="02:00" /><input type="hidden" class="form-hidden-time" id="input_7_hourSelect" name="q7_dataE[hour]" value="02" /><input type="hidden" class="form-hidden-time" id="input_7_minuteSelect" name="q7_dataE[min]" value="00" /><label data-seperate-translate="true" class="form-sub-label" for="input_7_timeInput" id="sublabel_7_hour" style="min-height:13px">Hour Minutes</label></span><span class="form-sub-label-container" style="vertical-align:top"><select class="time-dropdown form-dropdown validate[required]" id="input_7_ampm" name="q7_dataE[ampm]" data-component="time-ampm" required="" aria-labelledby="label_7 sublabel_7_ampm" autoComplete="off">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected="">PM</option>
+                  </select><label class="form-sub-label" for="input_7_ampm" id="sublabel_7_ampm" style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap">AM/PM Option</label></span></div>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_dropdown" id="id_10"><label class="form-label form-label-top form-label-auto" id="label_10" for="input_10" aria-hidden="false"> Local<span class="form-required">*</span> </label>
+        <div id="cid_10" class="form-input-wide jf-required" data-layout="half"> <select class="form-dropdown validate[required]" id="input_10" name="q10_choiceOf10" style="width:310px" data-component="dropdown" required="" aria-label="Local">
+            <option value="">Please Select</option>
+            <option value="Violin">Violin</option>
+            <option value="Guitar">Guitar</option>
+            <option value="Bass">Bass</option>
+            <option value="Drums">Drums</option>
+            <option value="Vocals">Vocals</option>
+          </select> </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_checkbox" id="id_6"><label class="form-label form-label-top form-label-auto" id="label_6" aria-hidden="false"> Coffe Service<span class="form-required">*</span> </label>
+        <div id="cid_6" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_6" data-component="checkbox"><span class="form-checkbox-item"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_0" name="q6_coffeService[]" required="" value="Monday" /><label id="label_input_6_0" for="input_6_0">Monday</label></span><span class="form-checkbox-item"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_1" name="q6_coffeService[]" required="" value="Tuesday" /><label id="label_input_6_1" for="input_6_1">Tuesday</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_2" name="q6_coffeService[]" required="" value="Wednesday" /><label id="label_input_6_2" for="input_6_2">Wednesday</label></span><span class="form-checkbox-item"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_3" name="q6_coffeService[]" required="" value="Thursday" /><label id="label_input_6_3" for="input_6_3">Thursday</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_4" name="q6_coffeService[]" required="" value="Friday" /><label id="label_input_6_4" for="input_6_4">Friday</label></span><span class="form-checkbox-item"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_5" name="q6_coffeService[]" required="" value="Saturday" /><label id="label_input_6_5" for="input_6_5">Saturday</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_6" type="checkbox" class="form-checkbox validate[required]" id="input_6_6" name="q6_coffeService[]" required="" value="Sunday" /><label id="label_input_6_6" for="input_6_6">Sunday</label></span></div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_textarea" id="id_8"><label class="form-label form-label-top form-label-auto" id="label_8" for="input_8" aria-hidden="false"> Finalidade </label>
+        <div id="cid_8" class="form-input-wide" data-layout="full"> <textarea id="input_8" class="form-textarea" name="q8_finalidade" style="width:648px;height:163px" data-component="textarea" aria-labelledby="label_8"></textarea> </div>
+      </li>
+      <li class="form-line" data-type="control_button" id="id_9">
+        <div id="cid_9" class="form-input-wide" data-layout="full">
+          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_9" type="submit" class="form-submit-button form-submit-button-navy-700 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Submit</button></div>
+        </div>
+      </li>
+      <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
+    </ul>
+  </div>
+  <script>
+    JotForm.showJotFormPowered = "new_footer";
+  </script>
+  <script>
+    JotForm.poweredByText = "Powered by Jotform";
+  </script><input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="250865430014651" />
+  <script type="text/javascript">
+    var all_spc = document.querySelectorAll("form[id='250865430014651'] .si" + "mple" + "_spc");
+    for (var i = 0; i < all_spc.length; i++)
+    {
+      all_spc[i].value = "250865430014651-250865430014651";
+    }
+  </script>
+</form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>

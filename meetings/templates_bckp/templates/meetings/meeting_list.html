@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Reuniões</title>
+    <!-- Link do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6H7tG84U02RVz9kW8zLgYjjz7Z8jw6C/ZnHp0D3N1pDhToVX28yf6H8W4n" crossorigin="anonymous">
+    <!-- Script para manipulação -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mock de reuniões existentes
+            let meetings = [
+                { date_time: '2025-03-28 09:00', purpose: 'Reunião de Planejamento', requester: { name: 'Ana Silva' } },
+                { date_time: '2025-03-28 11:00', purpose: 'Reunião de Vendas', requester: { name: 'Carlos Souza' } }
+            ];
+
+            // Função para renderizar a lista de reuniões
+            function renderMeetingList() {
+                const meetingList = document.getElementById('meeting-list');
+                meetingList.innerHTML = ''; // Limpa a lista
+                meetings.forEach(meeting => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item');
+                    listItem.innerHTML = `<strong>${meeting.date_time}</strong> - ${meeting.purpose} - ${meeting.requester.name}`;
+                    meetingList.appendChild(listItem);
+                });
+            }
+
+            // Função para adicionar uma nova reunião
+            function addMeeting(event) {
+                event.preventDefault();
+                
+                const dateTime = document.getElementById('meeting-datetime').value;
+                const purpose = document.getElementById('meeting-purpose').value;
+                const requesterName = document.getElementById('meeting-requester').value;
+
+                if (!dateTime || !purpose || !requesterName) {
+                    alert('Todos os campos são obrigatórios.');
+                    return;
+                }
+
+                const newMeeting = {
+                    date_time: dateTime,
+                    purpose: purpose,
+                    requester: { name: requesterName }
+                };
+
+                meetings.push(newMeeting);
+                renderMeetingList();
+                document.getElementById('meeting-form').reset();
+            }
+
+            // Inicializa a lista de reuniões
+            renderMeetingList();
+
+            // Evento de envio do formulário
+            document.getElementById('meeting-form').addEventListener('submit', addMeeting);
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Agenda de Reuniões</h1>
+
+        <!-- Lista de reuniões -->
+        <ul id="meeting-list" class="list-group mb-4"></ul>
+
+        <!-- Formulário para adicionar uma nova reunião -->
+        <h2>Cadastrar Nova Reunião</h2>
+        <form id="meeting-form">
+            <div class="mb-3">
+                <label for="meeting-datetime" class="form-label">Data e Hora</label>
+                <input type="datetime-local" class="form-control" id="meeting-datetime" required>
+            </div>
+            <div class="mb-3">
+                <label for="meeting-purpose" class="form-label">Objetivo</label>
+                <input type="text" class="form-control" id="meeting-purpose" required>
+            </div>
+            <div class="mb-3">
+                <label for="meeting-requester" class="form-label">Solicitante</label>
+                <input type="text" class="form-control" id="meeting-requester" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agendar Reunião</button>
+        </form>
+    </div>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0rTx6WbLvUgfGR0IaRmY3wO6cAsoqz2F3UoVfIsl0cZKNv73" crossorigin="anonymous"></script>
+</body>
+</html>

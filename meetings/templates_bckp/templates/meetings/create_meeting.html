@@ -1,0 +1,18 @@
+<!-- meetings/templates/meetings/create_meeting.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Reunião</title>
+</head>
+<body>
+    <h1>Cadastrar Nova Reunião</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'create_user' %}"><button type="button">Adicionar novo Colaborador</button></a>
+        <button type="submit">Agendar Reunião</button>
+    </form>
+    <a href="{% url 'meeting_list' %}">Voltar à Lista de Reuniões</a>
+</body>
+</html>
