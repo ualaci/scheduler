@@ -1,20 +1,184 @@
 <!-- meetings/templates/meetings/create_user.html -->
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Colaborador</title>
-    <script src="{% static 'js/script.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Solicitante</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .user-form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .form-header h1 {
+            font-weight: 600;
+        }
+        .form-control, .form-select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+        .btn-submit {
+            background-color: #2ecc71;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+        .btn-cancel {
+            background-color: #e74c3c;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-cancel:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            color: white;
+        }
+        .btn-back {
+            background-color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            color: white;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #34495e;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .user-form-container {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
 </head>
 <body>
-    <h1>Cadastrar novo colaborador</h1>
-    <form id="user-form" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Realizar Cadastro</button>
-    </form>
-    <a href="{% url 'create_meeting' %}">Cancelar</a>
-    <a href="{% url 'meeting_list' %}">Voltar à Lista de Reuniões</a>
+    <div class="container">
+        <div class="user-form-container">
+            <div class="form-header">
+                <h1><i class="fas fa-user-plus me-2"></i>Cadastrar Novo solicitante</h1>
+                <p class="text-muted">Preencha os dados abaixo para cadastrar um novo solicitante</p>
+            </div>
+
+            <form method="post" id="userForm">
+                {% csrf_token %}
+                
+                <div class="row">
+                    {% for field in form %}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}" class="form-label">
+                                {% if field.name == 'name' %}<i class="fas fa-user me-2"></i>
+                                {% elif field.name == 'email' %}<i class="fas fa-envelope me-2"></i>
+                                {% elif field.name == 'department' %}<i class="fas fa-building me-2"></i>
+                                {% elif field.name == 'position' %}<i class="fas fa-briefcase me-2"></i>
+                                {% endif %}
+                                {{ field.label }}
+                            </label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="action-buttons">
+                    <div>
+                        <a href="{% url 'create_meeting' %}" class="btn btn-cancel me-2">
+                            <i class="fas fa-times me-2"></i>Cancelar
+                        </a>
+                        <a href="{% url 'meeting_list' %}" class="btn btn-back">
+                            <i class="fas fa-arrow-left me-2"></i>Voltar à Lista
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-save me-2"></i>Realizar Cadastro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any custom JavaScript here if needed
+            const form = document.getElementById('userForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    console.log('User form submitted');
+                    // You can add form validation here
+                });
+            }
+
+            // Style form inputs
+            const selectElements = document.querySelectorAll('select');
+            selectElements.forEach(select => {
+                select.classList.add('form-select');
+            });
+
+            const inputElements = document.querySelectorAll('input:not([type="submit"]):not([type="button"])');
+            inputElements.forEach(input => {
+                input.classList.add('form-control');
+            });
+        });
+    </script>
 </body>
 </html>
