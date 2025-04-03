@@ -17,6 +17,7 @@ class Location(models.Model):
 
 class Meeting(models.Model):
     date_time = models.DateTimeField()
+    date_time_end = models.DateTimeField()
     requester = models.ForeignKey(User, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     purpose = models.TextField()
@@ -25,8 +26,18 @@ class Meeting(models.Model):
 
 
     def __str__(self):
+        if self.coffe_service_desc:
+            return (
+                f"📅 {self.date_time.strftime('%d/%m/%Y %H:%M')}h a {self.date_time_end.strftime('%H:%M')}h\n"
+                f"🎯 Propósito: {self.purpose}\n"
+                f"👤 Solicitado por: {self.requester}\n"
+                f"📍 Local: {self.location}\n"
+                f"☕ Serviço de Café: {'Sim' if self.coffe_service else 'Não'}"
+                f"☕ Descrição do serviço de Café: {self.coffe_service_desc}"
+            )
+
         return (
-            f"📅 {self.date_time.strftime('%d/%m/%Y %H:%M')}\n"
+            f"📅 {self.date_time.strftime('%d/%m/%Y %H:%M')}h a {self.date_time_end.strftime('%H:%M')}h\n"
             f"🎯 Propósito: {self.purpose}\n"
             f"👤 Solicitado por: {self.requester}\n"
             f"📍 Local: {self.location}\n"

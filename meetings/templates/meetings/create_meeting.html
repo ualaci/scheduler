@@ -114,6 +114,8 @@
 <body>
     <div class="container">
         <div class="meeting-form-container">
+            <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div> 
+
             <div class="form-header">
                 <h1><i class="fas fa-calendar-plus me-2"></i>Cadastrar Nova Reunião</h1>
                 <p class="text-muted">Preencha os detalhes abaixo para agendar uma nova reunião</p>
@@ -142,10 +144,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="time" class="form-label">
-                                    <i class="far fa-clock me-2"></i>Horário
+                                    <i class="far fa-clock me-2"></i>Horário de Início
                                 </label>
                                 <input type="time" class="form-control" id="time" name="time" required>
                             </div>
+
+                            <div class="form-group">
+                                <label for="time_end" class="form-label">
+                                    <i class="far fa-clock me-2"></i>Horário de Fim
+                                </label>
+                                <input type="time" class="form-control" id="time_end" name="time_end" required>
+                            </div>
+
                         </div>
                     </div>
                     
@@ -216,45 +226,82 @@
     <!-- Custom JS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set minimum date to today
+            const form = document.getElementById('meetingForm');
+            const errorMessageDiv = document.getElementById('errorMessage');
             const dateField = document.getElementById('date');
+            const coffeeCheckbox = document.getElementById('coffe_service');
+            const coffeeDescGroup = document.getElementById('coffee-service-desc-group');
+    
+            // Impede datas passadas
             if (dateField) {
                 const today = new Date().toISOString().split('T')[0];
                 dateField.setAttribute('min', today);
             }
-            
-            // Handle coffee service checkbox
-            const coffeeCheckbox = document.getElementById('coffe_service');
-            const coffeeDescGroup = document.getElementById('coffee-service-desc-group');
-            
-            coffeeCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    coffeeDescGroup.style.display = 'block';
-                } else {
-                    coffeeDescGroup.style.display = 'none';
-                    document.getElementById('coffe_service_desc').value = '';
-                }
-            });
-            
-            // Form submission - combine date and time
-            const form = document.getElementById('meetingForm');
+    
+            // Alterna a descrição do serviço de café
+            if (coffeeCheckbox && coffeeDescGroup) {
+                coffeeCheckbox.addEventListener('change', function() {
+                    coffeeDescGroup.style.display = this.checked ? 'block' : 'none';
+                    if (!this.checked) {
+                        document.getElementById('coffe_service_desc').value = '';
+                    }
+                });
+            }
+    
+            // Lida com envio do formulário
             if (form) {
-                form.addEventListener('submit', function(e) {
-                    // Combine date and time into date_time
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault(); // Evita o envio padrão
+    
+                    // Criar campos ocultos para armazenar data e hora combinadas
                     const date = document.getElementById('date').value;
                     const time = document.getElementById('time').value;
-                    
-                    // Create a hidden input for date_time
-                    const dateTimeInput = document.createElement('input');
-                    dateTimeInput.type = 'hidden';
-                    dateTimeInput.name = 'date_time';
-                    dateTimeInput.value = `${date}T${time}`;
-                    
-                    form.appendChild(dateTimeInput);
+                    const time_end = document.getElementById('time_end').value;
+    
+                    const dateTimeStartInput = document.createElement('input');
+                    dateTimeStartInput.type = 'hidden';
+                    dateTimeStartInput.name = 'date_time';
+                    dateTimeStartInput.value = `${date}T${time}`;
+    
+                    const dateTimeEndInput = document.createElement('input');
+                    dateTimeEndInput.type = 'hidden';
+                    dateTimeEndInput.name = 'date_time_end';
+                    dateTimeEndInput.value = `${date}T${time_end}`;
+    
+                    form.appendChild(dateTimeStartInput);
+                    form.appendChild(dateTimeEndInput);
+    
+                    // Envio da requisição para a API
+                    const formData = new FormData(form);
+    
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData
+                        });
+    
+                        const data = await response.json();
+    
+                        if (!response.ok) {
+                            // Exibe erro
+                            errorMessageDiv.textContent = data.error || 'Erro ao criar a reunião!';
+                            errorMessageDiv.classList.remove('d-none');
+                            return;
+                        }
+    
+                        // Redireciona se deu certo
+                        window.location.href = '/lista-de-reunioes';
+    
+                    } catch (error) {
+                        console.error('Erro ao processar a requisição:', error);
+                        errorMessageDiv.textContent = 'Erro inesperado. Tente novamente!';
+                        errorMessageDiv.classList.remove('d-none');
+                    }
                 });
             }
         });
     </script>
+    
 
 </body>
 </html>

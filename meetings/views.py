@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Meeting,User,Location
 from .forms import MeetingForm,UserForm
 from django.utils.timezone import now
+from django.http import JsonResponse
 
 def meeting_list(request):
     meetings = Meeting.objects.all()
@@ -18,6 +19,13 @@ def create_meeting(request):
         if form.is_valid():
             form.save()
             return redirect('meeting_list')
+        
+        errors = form.errors.get_json_data()
+        error_messages = [error['message'] for field in errors.values() for error in field] 
+        
+        if not form.is_valid():
+            #return JsonResponse({'error': 'Não foi possível criar a reunião. Verifique os dados e tente novamente.'}, status=400)
+            return JsonResponse({'error': error_messages[0]}, status=400)
     else:
         form = MeetingForm()
 
